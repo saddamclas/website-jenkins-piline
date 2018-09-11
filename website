@@ -1,0 +1,10 @@
+FROM httpd
+MAINTAINER shaik.saddam3@gmail.com
+RUN rm /usr/local/apache2/htdocs/*
+COPY index.html /usr/local/apache2/htdocs/
+
+EXPOSE 80
+ 
+  
+ 
+

@@ -1,0 +1,9 @@
+version: '3'
+services: 
+   app:
+    image: saddamclas/website:1
+    deploy:
+     replicas: 2
+    ports:
+     - "1999:80"
+
