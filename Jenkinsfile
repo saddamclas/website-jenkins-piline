@@ -14,7 +14,7 @@ node {
              sh 'docker build -t saddamclas/website-test:${env.BUILD_NUMBER} -f website . '
     }
     stage('Push Image') {
-            docker.withRegistry('https://registry.hub.docker.com', 'er-hub-credentials') {
+            docker.withRegistry('https://registry.hub.docker.com', 'ec6095eb-472e-419b-ad61-8454d3afb61c') {
             echo "${env.BUILD_NUMBER}"
             sh "docker push saddamclas/website-test:${env.BUILD_NUMBER}"
            }
