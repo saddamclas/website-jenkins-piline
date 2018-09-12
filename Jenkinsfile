@@ -17,7 +17,6 @@ node ('prod') {
             docker.withRegistry('https://registry.hub.docker.com', 'ec6095eb-472e-419b-ad61-8454d3afb61c') { 
             echo "${env.BUILD_NUMBER}"
             sh "docker tag saddamclas/website-jenkins-pipeline saddamclas/website-jenkins-pipeline:${env.BUILD_NUMBER}" 
-            docker.withRegistry('https://registry.hub.docker.com', 'ec6095eb-472e-419b-ad61-8454d3afb61c')    
             sh "docker push saddamclas/website-jenkins-pipeline:${env.BUILD_NUMBER}"
             }
     }
