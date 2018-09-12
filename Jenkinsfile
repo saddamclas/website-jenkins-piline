@@ -1,4 +1,4 @@
-node  {
+node ('prod') {
     def app
 
     stage('Clone repository') {
@@ -24,3 +24,4 @@ node  {
           /*  sh " docker srevice create --name web -p 9089:80  linuxcloudops/website-test:${env.BUILD_NUMBER}"  */
          }
 } 
+-label
