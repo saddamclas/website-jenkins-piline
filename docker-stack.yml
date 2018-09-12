@@ -1,7 +1,7 @@
 version: '3'
 services: 
    app:
-    image: saddamclas/website:1
+    image: saddamclas/website-jenkins-pipeline:${env.BUILD_NUMBER}
     deploy:
      replicas: 2
     ports:
