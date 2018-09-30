@@ -1,0 +1,35 @@
+node ('prod') {
+    def app
+
+    stage('Clone repository') {
+        /* Let's make sure we have the repository cloned to our workspace */
+
+        checkout scm
+    }
+
+    stage('Build images') {
+        /* This builds the actual image; synonymous to
+         * docker build on the command line. */
+             sh "hostname"
+             echo "${env.BUILD_NUMBER}"
+             sh 'docker build -t saddamclas/website-jenkins-pipeline  -f webpage .'
+             echo "${env.BUILD_NUMBER}"
+             sh "docker tag saddamclas/website-jenkins-pipeline saddamclas/website-jenkins-pipeline:${env.BUILD_NUMBER} "
+             pwd 
+             sh "hostname"
+    }
+    stage('Push Image') {
+            withDockerRegistry([ credentialsId: "92c83f7d-d7c7-4913-999c-af673a3eef40", url: "" ])
+           /* docker.withRegistry('https://registry.hub.docker.com', 'bb0b7427-5db4-40b5-9361-310c3d163154') */ {
+            echo "${env.BUILD_NUMBER}"
+            sh "docker tag saddamclas/website-jenkins-pipeline saddamclas/website-jenkins-pipeline:${env.BUILD_NUMBER} "
+            sh "docker push saddamclas/website-jenkins-pipeline:${env.BUILD_NUMBER}"
+           }
+   }
+    stage('Deploy ') {  
+          /* sh " docker service create --name web -p 9089:80  saiprasad169/website-test:${env.BUILD_NUMBER}"  */
+                    echo "saddamclas/website-jenkins-pipeline:${env.BUILD_NUMBER}"
+                     sh " sed -i 's/website-jenkins-pipeline/website-jenkins-pipeline:${env.BUILD_NUMBER}/g' docker-stack.yml"
+                    sh "docker stack deploy -c docker-stack.yml website" 
+         }
+   }
