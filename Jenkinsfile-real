@@ -12,7 +12,7 @@ node ('prod') {
          * docker build on the command line. */
              sh "hostname"
              echo "${env.BUILD_NUMBER}"
-             sh 'docker build -t saddamclas/website-jenkins-pipeline  -f webpage .'
+             sh 'docker build -t saddamclas/website-jenkins-pipeline  -f website .'
              echo "${env.BUILD_NUMBER}"
              sh "docker tag saddamclas/website-jenkins-pipeline saddamclas/website-jenkins-pipeline:${env.BUILD_NUMBER} "
              pwd 
