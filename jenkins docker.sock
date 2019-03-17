@@ -1,0 +1,11 @@
+root@docker-master:/home/ubuntu# setfacl -m u:jenkins:rwx /var/run/docker.sock
+root@docker-master:/home/ubuntu# getfacl /var/run/docker.sock
+getfacl: Removing leading '/' from absolute path names
+# file: var/run/docker.sock
+# owner: root
+# group: docker
+user::rw-
+user:jenkins:rwx
+group::rw-
+mask::rwx
+other::---
