@@ -1,4 +1,4 @@
-node /*('prod')*/ {
+node ('prod') {
     def app
 
     stage('Clone repository') {
@@ -19,7 +19,7 @@ node /*('prod')*/ {
              sh "hostname"
     }
     stage('Push Image') {
-            withDockerRegistry([ credentialsId: "12ca445f-14b7-4e2b-bf0f-86c835207c30", url: "" ])
+            withDockerRegistry([ credentialsId: "f8278852-e3ab-46ac-b437-39fdc0755bd0", url: "" ])
            /* docker.withRegistry('https://registry.hub.docker.com', 'bb0b7427-5db4-40b5-9361-310c3d163154') */ {
             echo "${env.BUILD_NUMBER}"
             sh "docker tag saddamclas/website-jenkins-pipeline saddamclas/website-jenkins-pipeline:${env.BUILD_NUMBER} "
