@@ -19,7 +19,7 @@ node ('prod') {
              sh "hostname"
     }
     stage('Push Image') {
-            withDockerRegistry([ credentialsId: "f8278852-e3ab-46ac-b437-39fdc0755bd0", url: "" ])
+            withDockerRegistry([ credentialsId: "7ca7eb88-7f5f-463d-aabc-000276716c2f", url: "" ])
            /* docker.withRegistry('https://registry.hub.docker.com', 'bb0b7427-5db4-40b5-9361-310c3d163154') */ {
             echo "${env.BUILD_NUMBER}"
             sh "docker tag saddamclas/website-jenkins-pipeline saddamclas/website-jenkins-pipeline:${env.BUILD_NUMBER} "
