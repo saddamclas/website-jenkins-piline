@@ -31,5 +31,6 @@ node ('prod') {
                     echo "saddamclas/website-jenkins-pipeline:${env.BUILD_NUMBER}"
                      sh " sed -i 's/website-jenkins-pipeline/website-jenkins-pipeline:${env.BUILD_NUMBER}/g' docker-stack.yml"
                     sh "docker stack deploy -c docker-stack.yml website" 
+                    
          }
    }
